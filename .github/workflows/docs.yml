@@ -1,7 +1,7 @@
 
 name: verify-docs-quality
 on:
-  pull_request:
+  push
 
 permissions:
   contents: read
