@@ -1,7 +1,7 @@
 
 name: verify-docs-quality
 on:
-  push
+  pull_request
 
 permissions:
   contents: read
@@ -21,6 +21,5 @@ jobs:
         id: vale
         with:
           fail_on_error: true
-          reporter: github-check
         env:
           GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
