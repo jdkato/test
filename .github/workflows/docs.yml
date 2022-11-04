@@ -21,7 +21,9 @@ jobs:
         id: changed-files
         uses: tj-actions/changed-files@v34
 
-      - uses: errata-ai/vale-action@reviewdog
+      - name: Run changed-files
+        id: vale
+        uses: errata-ai/vale-action@reviewdog
         with:
           debug: true
           fail_on_error: true
