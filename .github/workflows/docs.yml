@@ -27,6 +27,6 @@ jobs:
           fail_on_error: true
           reporter: github-check
           filter_mode: nofilter
-          files: ${{ steps.changed-files.outputs.all_changed_files }}
+          files: '${{ toJSON(steps.changed-files.outputs.all_changed_files) }}'
         env:
           GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
