@@ -27,16 +27,14 @@ jobs:
         run: |
           echo '${{ steps.changed-files.outputs.all_changed_files }}'
 
-      # using '--output=/lib/rdjsonl.tmpl,README.md,.github/workflows/docs.yml'.
       - name: Run Vale
         id: vale
         uses: errata-ai/vale-action@reviewdog
         with:
-          debug: true
           fail_on_error: true
           reporter: github-check
           filter_mode: nofilter
-          separator: ","
           files: '${{ steps.changed-files.outputs.all_changed_files }}'
+          separator: ","
         env:
           GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
