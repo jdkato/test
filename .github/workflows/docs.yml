@@ -25,7 +25,7 @@ jobs:
 
       - name: Show output
         run: |
-          echo '${{ toJSON(steps.changed-files.outputs.all_changed_files) }}'
+          echo '${{ fromJSON(steps.changed-files.outputs.all_changed_files) }}'
 
       # using '--output=/lib/rdjsonl.tmpl,README.md,.github/workflows/docs.yml'.
       - name: Run Vale
