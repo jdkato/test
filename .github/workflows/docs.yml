@@ -32,6 +32,6 @@ jobs:
           reporter: github-check
           filter_mode: nofilter
           # using '--output=/lib/rdjsonl.tmpl,README.md,.github/workflows/docs.yml'.
-          files: '${{ toJSON(steps.changed-files.outputs.all_changed_files) }}'
+          files: '${{ fromJSON(steps.changed-files.outputs.all_changed_files) }}'
         env:
           GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
