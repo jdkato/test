@@ -21,11 +21,11 @@ jobs:
         id: changed-files
         uses: tj-actions/changed-files@v34
         with:
-          json: true
+          separator: ","
 
       - name: Show output
         run: |
-          echo '${{ fromJSON(steps.changed-files.outputs.all_changed_files) }}'
+          echo '${{ steps.changed-files.outputs.all_changed_files }}'
 
       # using '--output=/lib/rdjsonl.tmpl,README.md,.github/workflows/docs.yml'.
       - name: Run Vale
@@ -36,6 +36,7 @@ jobs:
           fail_on_error: true
           reporter: github-check
           filter_mode: nofilter
-          files: '${{ toJSON(steps.changed-files.outputs.all_changed_files) }}'
+          separator: ","
+          files: '${{ steps.changed-files.outputs.all_changed_files }}'
         env:
           GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
