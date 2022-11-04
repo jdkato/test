@@ -20,8 +20,6 @@ jobs:
       - name: Run changed-files with json output
         id: changed-files
         uses: tj-actions/changed-files@v34
-        with:
-          json: true
 
       - uses: errata-ai/vale-action@reviewdog
         with:
