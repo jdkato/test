@@ -17,17 +17,13 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Run changed-files
+      - name: Get comma-delimited changed files.
         id: changed-files
         uses: tj-actions/changed-files@v34
         with:
           separator: ","
 
-      - name: Show output
-        run: |
-          echo '${{ steps.changed-files.outputs.all_changed_files }}'
-
-      - name: Run Vale
+      - name: Run Vale with input from changed-files.
         id: vale
         uses: errata-ai/vale-action@reviewdog
         with:
