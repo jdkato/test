@@ -24,7 +24,6 @@ jobs:
           separator: ","
 
       - uses: errata-ai/vale-action@reviewdog
-        id: vale
         with:
           debug: true
           fail_on_error: true
