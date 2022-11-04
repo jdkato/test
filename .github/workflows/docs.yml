@@ -15,12 +15,19 @@ jobs:
     steps:
       - uses: actions/checkout@v3
         with:
-          persist-credentials: false
+          fetch-depth: 0
+
+      - name: Get all changed files and use a comma separator in the output
+        id: changed-files
+        uses: tj-actions/changed-files@v34
+        with:
+          separator: ","
 
       - uses: errata-ai/vale-action@reviewdog
         id: vale
         with:
           fail_on_error: true
           reporter: github-check
+          files: '${{ steps.changed-files.outputs.all_changed_files }}'
         env:
           GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
