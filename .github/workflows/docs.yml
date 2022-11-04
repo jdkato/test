@@ -29,6 +29,6 @@ jobs:
           fail_on_error: true
           reporter: github-check
           filter_mode: nofilter
-          files: '[".github/workflows/docs.yml"]'
+          files: '[".github/workflows/docs.yml", "README.md"]'
         env:
           GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
